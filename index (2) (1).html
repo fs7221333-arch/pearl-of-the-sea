@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Pearl of the Sea — Michelin-inspired luxury seafood restaurant in Duba, Saudi Arabia. Dine-In, Takeaway & Delivery. Rated 4.5★ by 194 guests.">
+<meta name="keywords" content="seafood restaurant Duba, Saudi Arabia seafood, luxury dining, lobster, shrimp, grilled fish, مطعم أسماك">
+<title>Pearl of the Sea | Luxury Seafood Restaurant — Duba, Saudi Arabia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<style>
+/* ─────────────────────────────────────────────
+   DESIGN TOKENS
+───────────────────────────────────────────── */
+:root {
+  --navy:    #040d1a;
+  --deep:    #070f22;
+  --mid:     #0b1630;
+  --surface: #0f1e3a;
+  --glass:   rgba(15,30,60,0.55);
+  --gold:    #c9a84c;
+  --gold2:   #e8c96d;
+  --gold-dim:#7a5f2a;
+  --white:   #f5f0e8;
+  --white2:  #e0d8c8;
+  --muted:   #8898aa;
+  --accent:  #1a3a6b;
+
+  --ff-display: 'Playfair Display', Georgia, serif;
+  --ff-body:    'Cormorant Garamond', Georgia, serif;
+  --ff-ui:      'Inter', system-ui, sans-serif;
+
+  --radius: 16px;
+  --trans:  0.4s cubic-bezier(.25,.8,.25,1);
+}
+
+/* ─────────────────────────────────────────────
+   RESET & BASE
+───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: var(--ff-body);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+::selection { background: var(--gold); color: var(--navy); }
+
+/* ─────────────────────────────────────────────
+   SCROLLBAR
+───────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--navy); }
+::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 3px; }
+
+/* ─────────────────────────────────────────────
+   TYPOGRAPHY HELPERS
+───────────────────────────────────────────── */
+.display-serif { font-family: var(--ff-display); }
+.label-caps {
+  font-family: var(--ff-ui);
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.gold-line {
+  display: inline-block;
+  width: 48px; height: 1px;
+  background: var(--gold);
+  vertical-align: middle;
+  margin: 0 12px;
+}
+
+/* ─────────────────────────────────────────────
+   GOLD GRADIENT TEXT
+───────────────────────────────────────────── */
+.gold-text {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold2) 50%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─────────────────────────────────────────────
+   BUTTONS
+───────────────────────────────────────────── */
+.btn-gold {
+  font-family: var(--ff-ui);
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: 14px 36px;
+  border-radius: 2px;
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  color: var(--navy);
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: var(--trans);
+}
+.btn-gold::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: rgba(255,255,255,.15);
+  transform: translateX(-100%);
+  transition: transform .45s ease;
+}
+.btn-gold:hover::before { transform: translateX(0); }
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(201,168,76,.35); color: var(--navy); }
+
+.btn-outline-gold {
+  font-family: var(--ff-ui);
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: 13px 34px;
+  border-radius: 2px;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  background: transparent;
+  cursor: pointer;
+  transition: var(--trans);
+}
+.btn-outline-gold:hover {
+  background: var(--gold);
+  color: var(--navy);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(201,168,76,.25);
+}
+
+/* ─────────────────────────────────────────────
+   GLASS CARD
+───────────────────────────────────────────── */
+.glass-card {
+  background: var(--glass);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(201,168,76,.15);
+  border-radius: var(--radius);
+  transition: var(--trans);
+}
+.glass-card:hover {
+  border-color: rgba(201,168,76,.4);
+  transform: translateY(-6px);
+  box-shadow: 0 24px 60px rgba(0,0,0,.5);
+}
+
+/* ─────────────────────────────────────────────
+   SECTION SPACING
+───────────────────────────────────────────── */
+.section { padding: 120px 0; }
+.section-sm { padding: 80px 0; }
+.section-header { text-align: center; margin-bottom: 70px; }
+.section-title {
+  font-family: var(--ff-display);
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 12px 0 20px;
+}
+.section-sub {
+  font-family: var(--ff-body);
+  font-size: 1.15rem;
+  color: var(--muted);
+  max-width: 540px;
+  margin: 0 auto;
+  font-style: italic;
+}
+
+/* ─────────────────────────────────────────────
+   DIVIDER
+───────────────────────────────────────────── */
+.ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 20px 0;
+  color: var(--gold);
+}
+.ornament::before, .ornament::after {
+  content: '';
+  flex: 1;
+  max-width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold));
+}
+.ornament::after { background: linear-gradient(90deg, var(--gold), transparent); }
+
+/* ═══════════════════════════════════════════
+   NAVBAR
+═══════════════════════════════════════════ */
+#mainNav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 20px 0;
+  transition: background .4s ease, padding .4s ease, box-shadow .4s ease;
+}
+#mainNav.scrolled {
+  background: rgba(4,13,26,.95);
+  backdrop-filter: blur(20px);
+  padding: 10px 0;
+  box-shadow: 0 4px 30px rgba(0,0,0,.5);
+  border-bottom: 1px solid rgba(201,168,76,.12);
+}
+.nav-logo {
+  font-family: var(--ff-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.nav-logo span { color: var(--gold); }
+.navbar-nav .nav-link {
+  font-family: var(--ff-ui);
+  font-size: .75rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--white2) !important;
+  padding: 8px 14px !important;
+  transition: color .3s;
+  position: relative;
+}
+.navbar-nav .nav-link::after {
+  content: '';
+  position: absolute; bottom: 4px; left: 14px; right: 14px;
+  height: 1px; background: var(--gold);
+  transform: scaleX(0); transition: transform .35s ease;
+}
+.navbar-nav .nav-link:hover { color: var(--gold) !important; }
+.navbar-nav .nav-link:hover::after { transform: scaleX(1); }
+.navbar-toggler { border: 1px solid rgba(201,168,76,.4); }
+.navbar-toggler-icon { filter: invert(1); }
+
+/* ═══════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════ */
+#hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Cinematic background using Unsplash seafood images */
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(4,13,26,.4) 0%, rgba(4,13,26,.65) 60%, rgba(4,13,26,1) 100%),
+    url('https://images.unsplash.com/photo-1590779033100-9f17a209d38a?w=1920&q=90&fit=crop') center/cover no-repeat;
+  transform: scale(1.05);
+  animation: heroZoom 18s ease-in-out infinite alternate;
+}
+@keyframes heroZoom {
+  0%   { transform: scale(1.05); }
+  100% { transform: scale(1.12); }
+}
+
+/* Particle shimmer overlay */
+.hero-shimmer {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 20% 50%, rgba(201,168,76,.06) 0%, transparent 70%),
+              radial-gradient(ellipse at 80% 50%, rgba(26,58,107,.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Steam canvas */
+#steamCanvas {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  opacity: .45;
+}
+
+.hero-content { position: relative; z-index: 2; text-align: center; padding: 0 20px; }
+
+.hero-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,.07);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(201,168,76,.3);
+  border-radius: 40px;
+  padding: 8px 22px;
+  margin-bottom: 28px;
+  font-family: var(--ff-ui);
+  font-size: .8rem;
+  letter-spacing: .06em;
+  animation: fadeDown .8s ease both;
+}
+.hero-rating .stars { color: var(--gold); letter-spacing: 2px; }
+
+.hero-title {
+  font-family: var(--ff-display);
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -.01em;
+  animation: fadeUp .9s ease .1s both;
+}
+.hero-title em {
+  font-style: italic;
+  display: block;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold2) 55%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-sub {
+  font-family: var(--ff-body);
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  color: var(--white2);
+  font-style: italic;
+  margin: 18px 0 42px;
+  animation: fadeUp .9s ease .22s both;
+}
+.hero-btns {
+  display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+  animation: fadeUp .9s ease .34s both;
+}
+
+.hero-scroll {
+  position: absolute; bottom: 36px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  font-family: var(--ff-ui); font-size: .65rem; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--gold); z-index: 2;
+  animation: bounce 2s ease infinite;
+}
+@keyframes bounce {
+  0%,100% { transform: translateX(-50%) translateY(0); }
+  50%      { transform: translateX(-50%) translateY(8px); }
+}
+
+/* ─── keyframes ─── */
+@keyframes fadeUp   { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:none; } }
+@keyframes fadeDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:none; } }
+
+/* ═══════════════════════════════════════════
+   MARQUEE STRIP
+═══════════════════════════════════════════ */
+.marquee-strip {
+  background: linear-gradient(135deg, var(--gold-dim), var(--gold));
+  padding: 14px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.marquee-track {
+  display: inline-block;
+  animation: marquee 28s linear infinite;
+  font-family: var(--ff-ui);
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ═══════════════════════════════════════════
+   ABOUT
+═══════════════════════════════════════════ */
+#about { background: var(--deep); }
+.about-img-wrap {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.about-img-wrap img {
+  width: 100%; height: 540px; object-fit: cover;
+  transition: transform .8s ease;
+}
+.about-img-wrap:hover img { transform: scale(1.04); }
+.about-img-frame {
+  position: absolute; inset: 18px;
+  border: 1px solid rgba(201,168,76,.35);
+  border-radius: calc(var(--radius) - 4px);
+  pointer-events: none;
+}
+.about-badge {
+  position: absolute; bottom: 28px; right: 28px;
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  color: var(--navy);
+  border-radius: 50%;
+  width: 100px; height: 100px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  font-family: var(--ff-display);
+  font-weight: 700;
+  box-shadow: 0 8px 32px rgba(201,168,76,.45);
+}
+.about-badge .num { font-size: 1.8rem; line-height: 1; }
+.about-badge .lbl { font-size: .55rem; letter-spacing: .1em; text-transform: uppercase; }
+
+.about-stat {
+  display: flex; align-items: center; gap: 16px;
+  padding: 20px 24px;
+  border-left: 2px solid var(--gold);
+  margin-bottom: 20px;
+}
+.about-stat .num { font-family: var(--ff-display); font-size: 2rem; color: var(--gold); font-weight: 700; }
+.about-stat .desc { font-size: .9rem; color: var(--muted); line-height: 1.3; }
+
+/* ═══════════════════════════════════════════
+   MENU
+═══════════════════════════════════════════ */
+#menu { background: var(--navy); }
+
+.menu-tabs {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+  margin-bottom: 56px;
+}
+.menu-tab {
+  font-family: var(--ff-ui);
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border-radius: 2px;
+  border: 1px solid rgba(201,168,76,.25);
+  color: var(--muted);
+  background: transparent;
+  cursor: pointer;
+  transition: var(--trans);
+}
+.menu-tab:hover, .menu-tab.active {
+  background: var(--gold);
+  color: var(--navy);
+  border-color: var(--gold);
+}
+
+.menu-grid { display: none; }
+.menu-grid.active { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 28px; animation: fadeUp .5s ease; }
+
+.menu-card {
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid rgba(201,168,76,.1);
+  transition: var(--trans);
+}
+.menu-card:hover { transform: translateY(-8px); border-color: rgba(201,168,76,.4); box-shadow: 0 24px 60px rgba(0,0,0,.6); }
+.menu-card-img {
+  position: relative;
+  height: 220px; overflow: hidden;
+}
+.menu-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.menu-card:hover .menu-card-img img { transform: scale(1.08); }
+.menu-card-img .price-tag {
+  position: absolute; top: 14px; right: 14px;
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  color: var(--navy);
+  font-family: var(--ff-display);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 4px 14px;
+  border-radius: 20px;
+}
+.menu-card-body { padding: 20px; }
+.menu-card-body h5 { font-family: var(--ff-display); font-size: 1.15rem; margin-bottom: 6px; }
+.menu-card-body p { font-size: .9rem; color: var(--muted); line-height: 1.5; }
+
+/* ═══════════════════════════════════════════
+   GALLERY
+═══════════════════════════════════════════ */
+#gallery { background: var(--deep); }
+
+.masonry-grid {
+  columns: 3; column-gap: 16px;
+}
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 16px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+.masonry-item img { width: 100%; display: block; transition: transform .6s ease; }
+.masonry-item:hover img { transform: scale(1.05); }
+.masonry-overlay {
+  position: absolute; inset: 0;
+  background: rgba(4,13,26,.55);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity .4s ease;
+}
+.masonry-item:hover .masonry-overlay { opacity: 1; }
+.masonry-overlay i { font-size: 2rem; color: var(--gold); }
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed; inset: 0;
+  z-index: 9999;
+  background: rgba(0,0,0,.92);
+  align-items: center; justify-content: center;
+  padding: 20px;
+}
+.lightbox.active { display: flex; }
+.lightbox img { max-width: 90vw; max-height: 88vh; border-radius: 8px; box-shadow: 0 0 80px rgba(0,0,0,.8); }
+.lightbox-close {
+  position: absolute; top: 24px; right: 32px;
+  font-size: 2rem; color: var(--gold); cursor: pointer;
+  line-height: 1;
+}
+
+@media (max-width: 768px) { .masonry-grid { columns: 2; } }
+@media (max-width: 480px) { .masonry-grid { columns: 1; } }
+
+/* ═══════════════════════════════════════════
+   REVIEWS
+═══════════════════════════════════════════ */
+#reviews { background: var(--navy); }
+.review-card {
+  padding: 32px;
+  height: 100%;
+}
+.review-stars { color: var(--gold); letter-spacing: 3px; font-size: 1rem; margin-bottom: 14px; }
+.review-text { font-size: 1rem; font-style: italic; color: var(--white2); line-height: 1.7; margin-bottom: 20px; }
+.review-author { display: flex; align-items: center; gap: 14px; }
+.review-avatar {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold-dim), var(--gold));
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--ff-display); font-weight: 700; font-size: 1.1rem; color: var(--navy);
+  flex-shrink: 0;
+}
+.review-name { font-family: var(--ff-ui); font-weight: 600; font-size: .88rem; }
+.review-loc  { font-size: .78rem; color: var(--muted); }
+
+/* ═══════════════════════════════════════════
+   SERVICES
+═══════════════════════════════════════════ */
+#services { background: var(--deep); }
+.service-card {
+  padding: 48px 32px;
+  text-align: center;
+  height: 100%;
+}
+.service-icon {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,168,76,.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem; color: var(--gold);
+  margin: 0 auto 24px;
+  transition: var(--trans);
+}
+.service-card:hover .service-icon {
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  color: var(--navy);
+  border-color: transparent;
+  transform: scale(1.1);
+}
+.service-card h4 { font-family: var(--ff-display); font-size: 1.3rem; margin-bottom: 12px; }
+.service-card p { color: var(--muted); font-size: .95rem; }
+
+/* ═══════════════════════════════════════════
+   LOCATION
+═══════════════════════════════════════════ */
+#location { background: var(--navy); }
+.map-wrap {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid rgba(201,168,76,.2);
+  box-shadow: 0 20px 60px rgba(0,0,0,.5);
+}
+.map-wrap iframe { display: block; width: 100%; height: 420px; border: none; filter: grayscale(.2) brightness(.85); }
+.location-info { padding: 36px; }
+.info-row { display: flex; gap: 14px; margin-bottom: 22px; }
+.info-icon { color: var(--gold); font-size: 1.1rem; margin-top: 4px; flex-shrink: 0; }
+.info-label { font-family: var(--ff-ui); font-size: .7rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+.info-val { color: var(--white2); font-size: .98rem; }
+
+/* ═══════════════════════════════════════════
+   CONTACT
+═══════════════════════════════════════════ */
+#contact { background: var(--deep); }
+.form-control-dark {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(201,168,76,.18);
+  border-radius: 8px;
+  color: var(--white) !important;
+  padding: 14px 18px;
+  font-family: var(--ff-body);
+  font-size: 1rem;
+  transition: border-color .3s;
+}
+.form-control-dark::placeholder { color: var(--muted); }
+.form-control-dark:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: rgba(255,255,255,.08);
+  box-shadow: 0 0 0 3px rgba(201,168,76,.12);
+}
+textarea.form-control-dark { resize: vertical; min-height: 130px; }
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+footer {
+  background: var(--mid);
+  border-top: 1px solid rgba(201,168,76,.12);
+  padding: 80px 0 32px;
+}
+.footer-logo { font-family: var(--ff-display); font-size: 1.8rem; font-weight: 700; }
+.footer-logo span { color: var(--gold); }
+.footer-tagline { font-style: italic; color: var(--muted); margin-top: 8px; font-size: .95rem; }
+.footer-links { list-style: none; padding: 0; }
+.footer-links li { margin-bottom: 10px; }
+.footer-links a {
+  color: var(--muted); font-size: .9rem;
+  transition: color .3s;
+  font-family: var(--ff-ui);
+  letter-spacing: .04em;
+}
+.footer-links a:hover { color: var(--gold); }
+.footer-head { font-family: var(--ff-ui); font-size: .7rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: block; }
+.social-icons { display: flex; gap: 12px; margin-top: 20px; }
+.social-icons a {
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 1px solid rgba(201,168,76,.3);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold); font-size: .9rem;
+  transition: var(--trans);
+}
+.social-icons a:hover { background: var(--gold); color: var(--navy); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,.07); margin-top: 60px; padding-top: 24px; color: var(--muted); font-size: .78rem; font-family: var(--ff-ui); }
+
+/* ═══════════════════════════════════════════
+   ANIMATIONS (scroll-reveal)
+═══════════════════════════════════════════ */
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-left  { opacity: 0; transform: translateX(-40px); transition: opacity .7s ease, transform .7s ease; }
+.reveal-left.visible  { opacity: 1; transform: none; }
+.reveal-right { opacity: 0; transform: translateX(40px); transition: opacity .7s ease, transform .7s ease; }
+.reveal-right.visible { opacity: 1; transform: none; }
+
+/* ═══════════════════════════════════════════
+   BACK TO TOP
+═══════════════════════════════════════════ */
+#toTop {
+  position: fixed; bottom: 32px; right: 32px;
+  width: 46px; height: 46px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  color: var(--navy); font-size: 1rem;
+  display: none; align-items: center; justify-content: center;
+  cursor: pointer; z-index: 999;
+  box-shadow: 0 6px 24px rgba(201,168,76,.35);
+  border: none;
+  transition: transform .3s ease;
+}
+#toTop:hover { transform: translateY(-4px); }
+#toTop.show { display: flex; }
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE TWEAKS
+───────────────────────────────────────────── */
+@media (max-width: 991px) {
+  .section { padding: 80px 0; }
+  .about-img-wrap img { height: 380px; }
+}
+@media (max-width: 767px) {
+  .hero-btns { flex-direction: column; align-items: center; }
+  .btn-gold, .btn-outline-gold { width: 220px; text-align: center; }
+  .section { padding: 60px 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════ -->
+<nav id="mainNav" class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand nav-logo" href="#hero">Pearl <em style="font-style:normal;color:var(--gold)">of the</em> Sea</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+      <ul class="navbar-nav align-items-lg-center gap-1">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+        <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
+        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="#location">Location</a></li>
+        <li class="nav-item ms-2">
+          <a class="btn-gold" href="#contact" style="padding:11px 26px;font-size:.72rem;text-decoration:none;display:inline-block;">Reserve</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════
+     HERO
+═══════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-shimmer"></div>
+  <canvas id="steamCanvas"></canvas>
+
+  <div class="hero-content">
+    <div class="hero-rating">
+      <span class="stars">★★★★½</span>
+      <span>4.5 from 194 Reviews</span>
+      <span style="opacity:.4">|</span>
+      <span style="color:var(--gold)">Duba, Saudi Arabia</span>
+    </div>
+
+    <h1 class="hero-title">
+      The Finest<br>
+      <em>Seafood</em><br>
+      Experience
+    </h1>
+    <p class="hero-sub">From the Red Sea to your table — crafted with fire, salt & artistry</p>
+
+    <div class="hero-btns">
+      <a href="#menu" class="btn-gold">View Menu</a>
+      <a href="tel:+966540555460" class="btn-outline-gold">Order Online</a>
+      <a href="#contact" class="btn-outline-gold">Book a Table</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <i class="fa-solid fa-chevron-down"></i>
+  </div>
+</section>
+
+<!-- Marquee -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    &nbsp;&nbsp;Grilled Fish &bull; King Prawns &bull; Lobster Specials &bull; Crab Dishes &bull; Seafood Platters &bull; Shrimp Baskets &bull; Seafood Soup &bull; Fresh Juices &bull; Luxury Desserts &bull;&nbsp;&nbsp;Grilled Fish &bull; King Prawns &bull; Lobster Specials &bull; Crab Dishes &bull; Seafood Platters &bull; Shrimp Baskets &bull; Seafood Soup &bull; Fresh Juices &bull; Luxury Desserts &bull;
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     ABOUT
+═══════════════════════════════════════ -->
+<section id="about" class="section">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6 reveal-left">
+        <div class="about-img-wrap">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=85&fit=crop" alt="Pearl of the Sea interior — luxury seafood dining room" loading="lazy">
+          <div class="about-img-frame"></div>
+          <div class="about-badge">
+            <span class="num">2009</span>
+            <span class="lbl">Est.</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 reveal-right">
+        <span class="label-caps">Our Story</span>
+        <div class="ornament" style="justify-content:flex-start;"><span style="color:var(--gold);font-size:1.2rem;">✦</span></div>
+        <h2 class="section-title" style="text-align:left;">Where the Red Sea<br><em class="gold-text" style="font-style:italic;">Meets the Plate</em></h2>
+        <p style="color:var(--white2);line-height:1.8;margin-bottom:20px;">
+          Founded in 2009 along the pristine shores of Duba, Pearl of the Sea was born from a single obsession: to honour the extraordinary bounty of the Red Sea with the reverence it deserves. Our fishermen sail at dawn, our chefs light the grills at noon, and our guests arrive to a spectacle.
+        </p>
+        <p style="color:var(--muted);line-height:1.8;margin-bottom:36px;">
+          Every dish is a dialogue between tradition and technique — whole grilled Najdi snapper, clay-pot seafood bisques slow-cooked for six hours, and lobsters dressed simply in clarified butter and sea salt from the Farasan Islands.
+        </p>
+
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <div class="about-stat">
+              <div class="num">15+</div>
+              <div class="desc">Years of culinary<br>excellence in Duba</div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="about-stat">
+              <div class="num">40+</div>
+              <div class="desc">Signature seafood<br>dishes on the menu</div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="about-stat">
+              <div class="num">194</div>
+              <div class="desc">Five-star reviews<br>from our guests</div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="about-stat">
+              <div class="num">Daily</div>
+              <div class="desc">Fresh catch sourced<br>from the Red Sea</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     MENU
+═══════════════════════════════════════ -->
+<section id="menu" class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label-caps">Culinary Excellence</span>
+      <div class="ornament"><i class="fa-solid fa-fish"></i></div>
+      <h2 class="section-title">Our Signature <span class="gold-text">Menu</span></h2>
+      <p class="section-sub">Each dish is a celebration of the Red Sea's freshest catch, prepared with Michelin-star precision.</p>
+    </div>
+
+    <div class="menu-tabs reveal">
+      <button class="menu-tab active" data-cat="grilled">Grilled Fish</button>
+      <button class="menu-tab" data-cat="fried">Fried Fish</button>
+      <button class="menu-tab" data-cat="shrimp">Shrimp Platters</button>
+      <button class="menu-tab" data-cat="lobster">Lobster</button>
+      <button class="menu-tab" data-cat="crab">Crab Dishes</button>
+      <button class="menu-tab" data-cat="mixed">Mixed Seafood</button>
+      <button class="menu-tab" data-cat="soup">Seafood Soup</button>
+      <button class="menu-tab" data-cat="rice">Rice Dishes</button>
+      <button class="menu-tab" data-cat="juice">Fresh Juices</button>
+      <button class="menu-tab" data-cat="dessert">Desserts</button>
+    </div>
+
+    <!-- Grilled Fish -->
+    <div class="menu-grid active" id="cat-grilled">
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <img src="https://images.unsplash.com/photo-1519984388953-d2406bc725e1?w=600&q=85&fit=crop" alt="Whole Grilled Snapper">
+          <span class="price-tag">SAR 89</span>
+        </div>
+        <div class="menu-card-body">
+          <h5>Whole Grilled Snapper</h5>
+          <p>Red Sea snapper charred over mesquite, finished with lemon butter, garlic confit & fresh herbs.</p>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=85&fit=crop" alt="Grilled Sea Bass">
+          <span class="price-tag">SAR 105</span>
+        </div>
+        <div class="menu-card-body">
+          <h5>Grilled Sea Bass Fillet</h5>
+          <p>Premium sea bass in aromatic olive oil, capers, sun-dried tomatoes & fresh dill.</p>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <img src="https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=600&q=85&fit=crop" alt="Grilled Hammour">
+          <span class="price-tag">SAR 95</span>
+        </div>
+        <div class="menu-card-body">
+          <h5>Grilled Hammour</h5>
+          <p>The Gulf's prized grouper, charcoal-grilled whole and served with tahini and Arabic bread.</p>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=600&q=85&fit=crop" alt="Tuna Steak">
+          <span class="price-tag">SAR 120</span>
+        </div>
+        <div class="menu-card-body">
+          <h5>Seared Tuna Steak</h5>
+          <p>Rare-seared albacore tuna with sesame crust, wasabi aioli and pickled ginger ribbons.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fried Fish -->
+    <div class="menu-grid" id="cat-fried">
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600&q=85&fit=crop" alt="Golden Fried Fish">
+          <span class="price-tag">SAR 65</span>
+        </div>
+        <div class="menu-card-body">
+          <h5>Golden Fried Snapper</h5>
+          <p>Crispy spiced batter, served with tartar sauce, house slaw and mango chutney.</p>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <img src="https://images.unsplash.com/photo-1562802378-063ec186a863?w=600&q=85&fit=crop" alt="Fish & Chips">
+          <span class="price-tag">SAR 58</span>
+        </div>
+        <div class="menu-card-body">
+          <h5>Pearl's Fish & Chips</h5>
+          <p>Thick-cut white fish in beer batter, hand-cut fries, malt vinegar aioli.</p>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <img src="https://images.unsplash.com/photo-1616645258469-ec681c17f3ee?w=600&q=85&fit=crop" alt="Fried Calamari">
+          <span class="price-tag">SAR 52</span>
+        </div>
+        <div class="menu-card-body">
+          <h5>Crispy Calamari Rings</h5>
+          <p>Tender squid in seasoned breadcrumb, fried to gold, with smoked paprika dipping sauce.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shrimp Platters -->
+    <div class="menu-grid" id="cat-shrimp">
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <img src="https://images.unsplash.com/photo-1626082896492-766af4eb6501?w=600&q=85&fit=crop" alt="Garlic Butter Shrimp">
+          <span class="price-tag">SAR 78</span>
+        </div>
+        <div class="menu-card-body">
+          <h5>Garlic Butter King Prawns</h5>
+          <p>Jumbo Arabian Gulf prawns sautéed in clarified butter, garlic, white wine & chilli.</p>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <img src="https://images.unsplash.com/photo-1673506499024-f88a06e5ee5f?w=600&q=85&fit=crop" alt="Grilled Prawn Platter">
+          <span class="price-tag">SAR 92</span>
+        </div>
+        <div class="menu-card-body">
+          <h5>Grilled Prawn Platter</h5>
+          <p>Eight head-on prawns grilled over coal with za'atar, lemon and gold-infused butter.</p>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <img src="https://images.unsplash.com/photo-1559410545-0bdcd187e0a6?w=600&q=85&fit=crop" alt="Shrimp Tempura">
+          <span class="price-tag">SAR 68</span>
+        </div>
+        <div class="menu-card-body">
+          <h5>Shrimp Tempura Platter</h5>
+          <p>Light rice-flour batter, chilled shrimp, served with ponzu & roe mayo.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lobster -->
+    <div class="menu-grid" id="cat-lobster">
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=600&q=85&fit=crop" alt="Grilled Lobster">
+          <span class="price-tag">SAR 245</span>
+        </div>
+        <div class="menu-card-body">
+          <h5>Whole Grilled Lobster</h5>
+          <p>Split Red Sea lobster, charred over open fire with saffron beurre blanc & micro herbs.</p>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=600&q=85&fit=crop" alt="Lobster Thermidor">
+          <span class="price-tag">SAR 285</span>
+        </div>
+        <div class="menu-card-body">
+          <h5>Lobster Thermidor</h5>
+          <p>Classic French preparation — creamy cognac sauce, gruyère gratin, truffle shavings.</p>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=600&q=85&fit=crop" alt="Lobster Bisque">
+          <span class="price-tag">SAR 68</span>
+        </div>
+        <div class="menu-card-body">
+          <h5>Lobster Bisque</h5>
+          <p>Velvety bisque reduction, lobster claw garnish, dill cream & gold dust finish.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Crab -->
+    <div class="menu-grid" id="cat-crab">
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <img src="https://images.unsplash.com/photo-1606755456206-b25206cde27e?w=600&q=85&fit=crop" alt="Whole Steamed Crab">
+          <span class="price-tag">SAR 165</span>
+        </div>
+        <div class="menu-card-body">
+          <h5>Whole Steamed Blue Crab</h5>
+          <p>Fresh-caught blue crab steamed with bay leaves, ginger & rice wine vinegar.</p>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=600&q=85&fit=crop" alt="Crab Linguine">
+          <span class="price-tag">SAR 88</span>
+        </div>
+        <div class="menu-card-body">
+          <h5>Crab & Chilli Linguine</h5>
+          <p>Picked white crabmeat, chilli, garlic, lemon zest tossed through al dente linguine.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mixed Seafood -->
+    <div class="menu-grid" id="cat-mixed">
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <img src="https://images.unsplash.com/photo-1625944525533-473f1a3d54e7?w=600&q=85&fit=crop" alt="Royal Mixed Platter">
+          <span class="price-tag">SAR 320</span>
+        </div>
+        <div class="menu-card-body">
+          <h5>Royal Mixed Seafood Platter</h5>
+          <p>Lobster, king prawns, clams, calamari, fish fillet & mussels — the full spectacle.</p>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <img src="https://images.unsplash.com/photo-1673506499024-f88a06e5ee5f?w=600&q=85&fit=crop" alt="Seafood Tower">
+          <span class="price-tag">SAR 280</span>
+        </div>
+        <div class="menu-card-body">
+          <h5>Seafood Tower for Two</h5>
+          <p>Three-tier presentation of raw oysters, chilled prawns, smoked salmon & crab claws.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Soup -->
+    <div class="menu-grid" id="cat-soup">
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=600&q=85&fit=crop" alt="Seafood Bisque">
+          <span class="price-tag">SAR 45</span>
+        </div>
+        <div class="menu-card-body">
+          <h5>Red Sea Seafood Bisque</h5>
+          <p>Six-hour slow-cooked tomato & saffron broth with crab, prawns and scallop.</p>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <img src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=600&q=85&fit=crop" alt="Tom Yam Seafood">
+          <span class="price-tag">SAR 42</span>
+        </div>
+        <div class="menu-card-body">
+          <h5>Spiced Seafood Tom Kha</h5>
+          <p>Coconut lemongrass broth with tiger prawns, baby squid & galangal.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rice -->
+    <div class="menu-grid" id="cat-rice">
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=600&q=85&fit=crop" alt="Seafood Biryani">
+          <span class="price-tag">SAR 72</span>
+        </div>
+        <div class="menu-card-body">
+          <h5>Seafood Maqlouba</h5>
+          <p>Fragrant saffron rice, layered with prawns, fish fillet & caramelised onion.</p>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=600&q=85&fit=crop" alt="Seafood Paella">
+          <span class="price-tag">SAR 85</span>
+        </div>
+        <div class="menu-card-body">
+          <h5>Seafood Paella</h5>
+          <p>Spanish-style bomba rice with mussels, clams, squid and saffron aioli.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Juice -->
+    <div class="menu-grid" id="cat-juice">
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <img src="https://images.unsplash.com/photo-1546173159-315724a31696?w=600&q=85&fit=crop" alt="Fresh Mango Juice">
+          <span class="price-tag">SAR 18</span>
+        </div>
+        <div class="menu-card-body">
+          <h5>Fresh Mango Sunrise</h5>
+          <p>Cold-pressed Alphonso mango with a dash of cardamom and chilled rosewater.</p>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <img src="https://images.unsplash.com/photo-1622597467836-f3e6707a0f75?w=600&q=85&fit=crop" alt="Citrus Fresh Juice">
+          <span class="price-tag">SAR 15</span>
+        </div>
+        <div class="menu-card-body">
+          <h5>Citrus Zest Blend</h5>
+          <p>Freshly squeezed orange, pink grapefruit and lemon with a spearmint finish.</p>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <img src="https://images.unsplash.com/photo-1499638673689-79a0b5115d87?w=600&q=85&fit=crop" alt="Watermelon Juice">
+          <span class="price-tag">SAR 16</span>
+        </div>
+        <div class="menu-card-body">
+          <h5>Watermelon Mint Cooler</h5>
+          <p>Chilled watermelon juice, fresh mint, a squeeze of lime — the summer essential.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dessert -->
+    <div class="menu-grid" id="cat-dessert">
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <img src="https://images.unsplash.com/photo-1551024506-0bccd828d730?w=600&q=85&fit=crop" alt="Umm Ali">
+          <span class="price-tag">SAR 28</span>
+        </div>
+        <div class="menu-card-body">
+          <h5>Signature Umm Ali</h5>
+          <p>Traditional Egyptian bread pudding with pistachios, coconut, golden raisins & cream.</p>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&q=85&fit=crop" alt="Chocolate Fondant">
+          <span class="price-tag">SAR 34</span>
+        </div>
+        <div class="menu-card-body">
+          <h5>Salted Caramel Fondant</h5>
+          <p>Warm dark chocolate fondant, salted caramel centre, Madagascan vanilla ice cream.</p>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&q=85&fit=crop" alt="Panna Cotta">
+          <span class="price-tag">SAR 26</span>
+        </div>
+        <div class="menu-card-body">
+          <h5>Saffron Panna Cotta</h5>
+          <p>Silky Iranian saffron cream, rose petal coulis and crushed pistachios.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     GALLERY
+═══════════════════════════════════════ -->
+<section id="gallery" class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label-caps">Visual Journey</span>
+      <div class="ornament"><i class="fa-solid fa-camera"></i></div>
+      <h2 class="section-title">Our <span class="gold-text">Gallery</span></h2>
+      <p class="section-sub">A cinematic look at what lands on your table.</p>
+    </div>
+
+    <div class="masonry-grid reveal">
+      <div class="masonry-item" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1519984388953-d2406bc725e1?w=600&q=85&fit=crop" alt="Grilled fish" loading="lazy">
+        <div class="masonry-overlay"><i class="fa-solid fa-expand"></i></div>
+      </div>
+      <div class="masonry-item" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1673506499024-f88a06e5ee5f?w=600&q=85&fit=crop" alt="King prawns" loading="lazy">
+        <div class="masonry-overlay"><i class="fa-solid fa-expand"></i></div>
+      </div>
+      <div class="masonry-item" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=600&q=85&fit=crop" alt="Lobster" loading="lazy">
+        <div class="masonry-overlay"><i class="fa-solid fa-expand"></i></div>
+      </div>
+      <div class="masonry-item" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=600&q=85&fit=crop" alt="Seafood soup" loading="lazy">
+        <div class="masonry-overlay"><i class="fa-solid fa-expand"></i></div>
+      </div>
+      <div class="masonry-item" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1606755456206-b25206cde27e?w=600&q=85&fit=crop" alt="Crab" loading="lazy">
+        <div class="masonry-overlay"><i class="fa-solid fa-expand"></i></div>
+      </div>
+      <div class="masonry-item" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1546173159-315724a31696?w=600&q=85&fit=crop" alt="Fresh juice" loading="lazy">
+        <div class="masonry-overlay"><i class="fa-solid fa-expand"></i></div>
+      </div>
+      <div class="masonry-item" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1551024506-0bccd828d730?w=600&q=85&fit=crop" alt="Dessert" loading="lazy">
+        <div class="masonry-overlay"><i class="fa-solid fa-expand"></i></div>
+      </div>
+      <div class="masonry-item" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=85&fit=crop" alt="Restaurant interior" loading="lazy">
+        <div class="masonry-overlay"><i class="fa-solid fa-expand"></i></div>
+      </div>
+      <div class="masonry-item" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1625944525533-473f1a3d54e7?w=600&q=85&fit=crop" alt="Mixed platter" loading="lazy">
+        <div class="masonry-overlay"><i class="fa-solid fa-expand"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<!-- ═══════════════════════════════════════
+     REVIEWS
+═══════════════════════════════════════ -->
+<section id="reviews" class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label-caps">What Our Guests Say</span>
+      <div class="ornament"><i class="fa-solid fa-star"></i></div>
+      <h2 class="section-title">Guest <span class="gold-text">Reviews</span></h2>
+      <p class="section-sub">Rated 4.5 ★ from 194 verified guests — their words, not ours.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4 reveal">
+        <div class="glass-card review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"The grilled hammour was unlike anything I've tasted in Saudi Arabia. The fish was immaculate — charred skin, tender flesh. Pearl of the Sea has ruined all other restaurants for me."</p>
+          <div class="review-author">
+            <div class="review-avatar">AM</div>
+            <div>
+              <div class="review-name">Abdullah M.</div>
+              <div class="review-loc">Jeddah, Saudi Arabia</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 reveal" style="transition-delay:.1s">
+        <div class="glass-card review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"The lobster thermidor was flawlessly executed. The staff remembered it was our anniversary and surprised us with a dessert. The whole evening felt cinematic — this place is a gem."</p>
+          <div class="review-author">
+            <div class="review-avatar">FA</div>
+            <div>
+              <div class="review-name">Fatima Al-Rashid</div>
+              <div class="review-loc">Riyadh, Saudi Arabia</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 reveal" style="transition-delay:.2s">
+        <div class="glass-card review-card">
+          <div class="review-stars">★★★★½</div>
+          <p class="review-text">"I ordered the Royal Mixed Platter and it arrived like a work of art. The shrimp were perfectly cooked and the setting right by the water made it magical. Highly recommend to anyone in Duba."</p>
+          <div class="review-author">
+            <div class="review-avatar">KH</div>
+            <div>
+              <div class="review-name">Khalid H.</div>
+              <div class="review-loc">Tabuk, Saudi Arabia</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 reveal" style="transition-delay:.05s">
+        <div class="glass-card review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"The delivery arrived in 35 minutes and the seafood soup was still steaming. That alone tells you everything about the quality of this restaurant. Will order again this week."</p>
+          <div class="review-author">
+            <div class="review-avatar">NA</div>
+            <div>
+              <div class="review-name">Nora Al-Anzi</div>
+              <div class="review-loc">Duba, Saudi Arabia</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 reveal" style="transition-delay:.15s">
+        <div class="glass-card review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Brought a group of 10 for a corporate dinner. Every single person was impressed. The space feels genuinely luxurious and the seafood biryani was the most fragrant rice dish I've ever eaten."</p>
+          <div class="review-author">
+            <div class="review-avatar">OB</div>
+            <div>
+              <div class="review-name">Omar B.</div>
+              <div class="review-loc">Dubai, UAE</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 reveal" style="transition-delay:.25s">
+        <div class="glass-card review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"The saffron panna cotta was an unexpected highlight. Fresh, delicate and absolutely stunning. Pearl of the Sea clearly cares about every dish from first course to last. Unforgettable."</p>
+          <div class="review-author">
+            <div class="review-avatar">RS</div>
+            <div>
+              <div class="review-name">Reem S.</div>
+              <div class="review-loc">Yanbu, Saudi Arabia</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SERVICES
+═══════════════════════════════════════ -->
+<section id="services" class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label-caps">How We Serve You</span>
+      <div class="ornament"><i class="fa-solid fa-concierge-bell"></i></div>
+      <h2 class="section-title">Our <span class="gold-text">Services</span></h2>
+    </div>
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-4 col-sm-6 reveal">
+        <div class="glass-card service-card">
+          <div class="service-icon"><i class="fa-solid fa-utensils"></i></div>
+          <h4>Dine-In</h4>
+          <p>Immerse yourself in our award-winning atmosphere. Tableside service, candlelight, and views of the Red Sea coast.</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 reveal" style="transition-delay:.1s">
+        <div class="glass-card service-card">
+          <div class="service-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+          <h4>Takeaway</h4>
+          <p>Every takeaway order is packaged in premium thermal containers to preserve flavour, temperature and presentation.</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 reveal" style="transition-delay:.2s">
+        <div class="glass-card service-card">
+          <div class="service-icon"><i class="fa-solid fa-motorcycle"></i></div>
+          <h4>No-Contact Delivery</h4>
+          <p>Contactless delivery right to your door. Hygienically sealed, GPS-tracked and guaranteed within 45 minutes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     LOCATION
+═══════════════════════════════════════ -->
+<section id="location" class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label-caps">Find Us</span>
+      <div class="ornament"><i class="fa-solid fa-location-dot"></i></div>
+      <h2 class="section-title">Our <span class="gold-text">Location</span></h2>
+    </div>
+    <div class="row g-4 align-items-stretch reveal">
+      <div class="col-lg-7">
+        <div class="map-wrap">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3631.6!2d37.1!3d27.35!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjfCsDIxJzAwLjAiTiAzN8KwMDYnMDAuMCJF!5e0!3m2!1sen!2ssa!4v1600000000000!5m2!1sen!2ssa"
+            allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Pearl of the Sea restaurant location in Duba, Saudi Arabia">
+          </iframe>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="glass-card h-100" style="border-radius:var(--radius);">
+          <div class="location-info">
+            <div class="info-row">
+              <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+              <div>
+                <div class="info-label">Address</div>
+                <div class="info-val">7482 Abi Fakher Al Hamawi<br>Duba 49312, Saudi Arabia</div>
+              </div>
+            </div>
+            <div class="info-row">
+              <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+              <div>
+                <div class="info-label">Phone</div>
+                <div class="info-val"><a href="tel:+966540555460" style="color:var(--gold)">+966 54 055 5460</a></div>
+              </div>
+            </div>
+            <div class="info-row">
+              <div class="info-icon"><i class="fa-solid fa-clock"></i></div>
+              <div>
+                <div class="info-label">Opening Hours</div>
+                <div class="info-val">Opens at 11:00 AM<br>Daily until closing</div>
+              </div>
+            </div>
+            <div class="info-row">
+              <div class="info-icon"><i class="fa-solid fa-star"></i></div>
+              <div>
+                <div class="info-label">Rating</div>
+                <div class="info-val" style="color:var(--gold);">★★★★½ &nbsp;<span style="color:var(--muted);font-size:.88rem;">4.5 / 5 (194 reviews)</span></div>
+              </div>
+            </div>
+            <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap;">
+              <a href="https://maps.google.com/?q=7482+Abi+Fakher+Al+Hamawi+Duba+49312+Saudi+Arabia" target="_blank" class="btn-gold" style="text-decoration:none;display:inline-block;font-size:.72rem;padding:12px 22px;">
+                <i class="fa-solid fa-map-location-dot me-2"></i>Get Directions
+              </a>
+              <a href="tel:+966540555460" class="btn-outline-gold" style="text-decoration:none;display:inline-block;font-size:.72rem;padding:12px 22px;">
+                <i class="fa-solid fa-phone me-2"></i>Call Now
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CONTACT
+═══════════════════════════════════════ -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label-caps">Get in Touch</span>
+      <div class="ornament"><i class="fa-solid fa-envelope-open-text"></i></div>
+      <h2 class="section-title">Reserve Your <span class="gold-text">Table</span></h2>
+      <p class="section-sub">We'll confirm your booking within 30 minutes. For parties of 8+, please call us directly.</p>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-7 reveal">
+        <div class="glass-card" style="padding:48px 40px;">
+          <form id="contactForm" novalidate>
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <input type="text" class="form-control form-control-dark w-100" placeholder="Your Full Name" required>
+              </div>
+              <div class="col-sm-6">
+                <input type="email" class="form-control form-control-dark w-100" placeholder="Email Address" required>
+              </div>
+              <div class="col-sm-6">
+                <input type="tel" class="form-control form-control-dark w-100" placeholder="Phone Number">
+              </div>
+              <div class="col-sm-6">
+                <input type="date" class="form-control form-control-dark w-100">
+              </div>
+              <div class="col-12">
+                <textarea class="form-control form-control-dark w-100" placeholder="Your message or special requests…" rows="5"></textarea>
+              </div>
+              <div class="col-12 text-center" style="margin-top:8px;">
+                <button type="submit" class="btn-gold" style="min-width:220px;" onclick="submitForm(event)">
+                  <i class="fa-solid fa-paper-plane me-2"></i>Send Reservation
+                </button>
+              </div>
+            </div>
+          </form>
+          <div id="formSuccess" style="display:none;text-align:center;margin-top:24px;">
+            <i class="fa-solid fa-circle-check" style="font-size:2.5rem;color:var(--gold);"></i>
+            <p style="margin-top:14px;font-family:var(--ff-display);font-size:1.2rem;">Thank you! We'll confirm your reservation within 30 minutes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4 col-md-6">
+        <div class="footer-logo">Pearl <span>of the Sea</span></div>
+        <p class="footer-tagline">Luxury seafood dining at the edge of the Red Sea.</p>
+        <div class="social-icons">
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="X/Twitter"><i class="fab fa-x-twitter"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-6">
+        <span class="footer-head">Quick Links</span>
+        <ul class="footer-links">
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#menu">Our Menu</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Reserve</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <span class="footer-head">Contact</span>
+        <ul class="footer-links">
+          <li><i class="fa-solid fa-location-dot me-2" style="color:var(--gold-dim)"></i>7482 Abi Fakher Al Hamawi, Duba 49312</li>
+          <li><a href="tel:+966540555460"><i class="fa-solid fa-phone me-2" style="color:var(--gold-dim)"></i>+966 54 055 5460</a></li>
+          <li><i class="fa-solid fa-envelope me-2" style="color:var(--gold-dim)"></i>info@pearlofthesea.sa</li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <span class="footer-head">Opening Hours</span>
+        <ul class="footer-links">
+          <li><span style="color:var(--white2)">Saturday – Thursday</span><br>11:00 AM – 11:30 PM</li>
+          <li style="margin-top:8px;"><span style="color:var(--white2)">Friday</span><br>12:30 PM – 12:00 AM</li>
+          <li style="margin-top:12px;">
+            <span style="background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);border-radius:20px;padding:4px 14px;font-size:.78rem;color:var(--gold);">
+              <i class="fa-solid fa-circle" style="font-size:.4rem;vertical-align:middle;margin-right:5px;"></i> Open Now
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <span>© 2025 Pearl of the Sea. All rights reserved.</span>
+      <span>Duba, Tabuk Region, Saudi Arabia 🇸🇦</span>
+      <span>Designed with ♥ for the Red Sea</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to Top -->
+<button id="toTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+  <i class="fa-solid fa-chevron-up"></i>
+</button>
+
+<!-- ═══════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+<script>
+/* ── Navbar scroll ── */
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+  document.getElementById('toTop').classList.toggle('show', window.scrollY > 400);
+});
+
+/* ── Menu tabs ── */
+document.querySelectorAll('.menu-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.menu-grid').forEach(g => g.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('cat-' + tab.dataset.cat).classList.add('active');
+  });
+});
+
+/* ── Lightbox ── */
+function openLightbox(el) {
+  const src = el.querySelector('img').src;
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+/* ── Scroll reveal ── */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+
+/* ── Contact form ── */
+function submitForm(e) {
+  e.preventDefault();
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+}
+
+/* ── Steam canvas animation ── */
+(function() {
+  const canvas = document.getElementById('steamCanvas');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+
+  function resize() {
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  class Particle {
+    constructor() { this.reset(); }
+    reset() {
+      this.x   = Math.random() * canvas.width;
+      this.y   = canvas.height + 20;
+      this.size = Math.random() * 4 + 2;
+      this.speed = Math.random() * .6 + .2;
+      this.drift = (Math.random() - .5) * .4;
+      this.opacity = Math.random() * .18 + .04;
+      this.life = 0;
+      this.maxLife = Math.random() * 260 + 100;
+    }
+    update() {
+      this.y -= this.speed;
+      this.x += this.drift;
+      this.life++;
+      if (this.life > this.maxLife) this.reset();
+    }
+    draw() {
+      const alpha = this.opacity * (1 - this.life / this.maxLife);
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${alpha})`;
+      ctx.fill();
+    }
+  }
+
+  for (let i = 0; i < 80; i++) {
+    const p = new Particle();
+    p.life = Math.random() * p.maxLife;
+    particles.push(p);
+  }
+
+  (function loop() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(loop);
+  })();
+})();
+
+/* ── Smooth active nav highlight ── */
+const sections = document.querySelectorAll('section[id]');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 160) cur = s.id;
+  });
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.style.color = link.getAttribute('href') === '#' + cur
+      ? 'var(--gold)'
+      : '';
+  });
+}, { passive: true });
+</script>
+</body>
+</html>
